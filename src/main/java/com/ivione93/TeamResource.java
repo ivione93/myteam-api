@@ -24,8 +24,8 @@ public class TeamResource {
 	TeamService teamService;
     
     @GET
-    @Path("/atletas")
     @Produces(MediaType.APPLICATION_JSON)
+    @Path("/atletas")
     @Operation(summary = "Query for current athletes", description = "Get all athletes")
     public Response getAllAthletes() {
     	
@@ -37,8 +37,8 @@ public class TeamResource {
     }
     
     @GET
-    @Path("/atletas/{licencia}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Path("/atletas/{licencia}")
     @Operation(summary = "Query an athlete by licencia", description = "Get an athlete by licencia")
     public Response getAthleteByLicencia(@PathParam("licencia") String licencia) {
     	
@@ -47,5 +47,17 @@ public class TeamResource {
     	String responseAthlete = teamService.getAthleteByLicencia(licencia);
     	
     	return Response.ok(responseAthlete).build();
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/atletas/{licencia}/results")
+    @Operation(summary = "Query for athlete results", description = "Get athlete results by licencia ")
+    public Response getAthleteResults(@PathParam("licencia") String licencia) {
+    	log.infof("Request results of athlete with licencia: %s", licencia);
+    	
+    	String responseResults = teamService.getAthleteResults(licencia);
+    	
+    	return Response.ok(responseResults).build();
     }
 }

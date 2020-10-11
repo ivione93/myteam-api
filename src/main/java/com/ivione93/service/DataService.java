@@ -22,5 +22,10 @@ public interface DataService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/atletas/{licencia}")
 	public Response getAthleteByLicencia(@PathParam("licencia") String licencia);
+	
+	@GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/atletas/{licencia}/results")
+    public Response getAthleteResults(@PathParam("licencia") String licencia);
 
 }

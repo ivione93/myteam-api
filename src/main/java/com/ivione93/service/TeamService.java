@@ -35,5 +35,15 @@ public class TeamService {
 		
 		return receivedAthlete;
 	}
+	
+	public String getAthleteResults(String licencia) {
+		log.infof("[API] Service getAthleteResults method with parameter { licencia: %s }", licencia);
+		
+		Response response = dataService.getAthleteResults(licencia);
+		
+		String receivedResults = response.readEntity(String.class);
+		
+		return receivedResults;
+	}
 
 }
